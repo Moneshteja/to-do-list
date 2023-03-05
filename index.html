@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    
+    <!-- Create form for adding tasks -->
+    <form>
+      <input type="text" id="taskInput" placeholder="Add Task">
+      <button type="button" onclick="addTask()">Add</button>
+    </form>
+    
+    <!-- Create list for displaying tasks -->
+    <ul id="taskList"></ul>
+    
+    <script>
+      function addTask() {
+        var taskInput = document.getElementById("taskInput");
+        
+        // Get the value of the input field
+        var taskValue = taskInput.value;
+        
+        // Create a new list item for the task
+        var newTask = document.createElement("li");
+        
+        // Create a span element for the task text
+        var taskText = document.createElement("span");
+        taskText.innerText = taskValue;
+        newTask.appendChild(taskText);
+        
+        // Create a button element for deleting the task
+        var deleteButton = document.createElement("button");
+        deleteButton.innerText = "Delete";
+        deleteButton.onclick = function() {
+          newTask.remove();
+        }
+        newTask.appendChild(deleteButton);
+        
+        // Add the task to the list
+        var taskList = document.getElementById("taskList");
+        taskList.appendChild(newTask);
+        
+        // Clear the input field
+        taskInput.value = "";
+      }
+    </script>
+    
+  </body>
+</html>
